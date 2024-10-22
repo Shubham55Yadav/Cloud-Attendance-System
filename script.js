@@ -90,3 +90,30 @@ document
   .addEventListener("click", function () {
     alert("Captcha refreshed! (Add your CAPTCHA generation logic here)");
   });
+
+
+  //hide features section by default 
+  const feature = document.getElementById("features");
+  const featurebtn = document.getElementById("featurebtn");
+  
+
+  // When the user clicks on the feature button, show the feature section
+  featurebtn.onclick = function () {
+    features.style.display = "flex"; 
+   
+};
+// When the user clicks on home button the feature section will be hiden again
+// const home = document.getElementById("home");
+// home.onclick = function () {
+  
+//     features.style.display = "none"; // hide feature section if clicked home button
+//   }
+// };
+
+const home = document.getElementById("home");
+const features = document.getElementById("features"); 
+
+home.onclick = function () {
+    features.style.display = "none"; // hide feature section if the home button is clicked
+}
+
