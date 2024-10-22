@@ -17,7 +17,7 @@ nav {
   /* padding: 15px 50px; */
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 1;
 }
 nav ul {
   list-style: none;
@@ -129,10 +129,13 @@ nav ul li a:hover {
   left: 0;
   top: 0;
   width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Dimmed background */
+  height: 100vh;
+  background-color: rgba(0, 0, 0, .9); /* Dimmed background */
   justify-content: center;
   align-items: center;
+  /* display: flex; */
+  
+  
 }
 
 /* Modal Content */
@@ -204,6 +207,7 @@ nav ul li a:hover {
 }
 
 .user-type {
+  display: flex;
   margin-bottom: 20px;
   text-align: left;
 }

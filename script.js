@@ -10,22 +10,24 @@ searchTrigger.addEventListener("click", function (event) {
     searchBar.style.display = "none";
   }
 });
-// login form
+//  show the login after clicking
 function showLogin() {
   document.getElementById("login").style.display = "flex";
 }
 
-function login() {
-  const username = document.getElementById("username").value;
-  const password = document.getElementById("password").value;
+// function login() {
+//   const username = document.getElementById("username").value;
+//   const password = document.getElementById("password").value;
 
-  if (username === "admin" && password === "admin") {
-    alert("Login successful!");
-    document.getElementById("login").style.display = "none";
-  } else {
-    alert("Invalid login details.");
-  }
-}
+//   if (username === "admin" && password === "admin") {
+//     alert("Login successful!");
+//     document.getElementById("login").style.display = "none";
+//   } else {
+//     alert("Invalid login details.");
+//   }
+// }
+
+// login none when clicked anywhere else
 
 window.onclick = function (event) {
   if (event.target == document.getElementById("login")) {
