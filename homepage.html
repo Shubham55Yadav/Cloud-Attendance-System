@@ -4,18 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cloud-Based Attendance System</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js -->
     <style>
-      /* Basic styles */
+      /* General Styles */
       body {
         margin: 0;
         padding: 0;
         font-family: "Arial", sans-serif;
         background-color: rgb(211, 211, 211);
         color: #1f2937;
-        background-image: url(assets/cloud-bg.avif);
+        /* background-image: url(assets/cloud-bg.avif); */
       }
-
-      /* Navbar styling */
+ /* Navbar styling */
       nav {
         background-color: #002855;
         display: flex;
@@ -44,7 +44,7 @@
         color: #f4f4f4;
         text-decoration: none;
         font-size: 1.2em;
-        transition: color 0.3s;
+        transition: color 0.3s ease;
       }
 
       nav ul li a:hover {
@@ -52,19 +52,16 @@
         transform: scale(1.1);
         transition: all 0.3s ease;
       }
-
       .menu-toggle {
         display: none;
         cursor: pointer;
         font-size: 1.5rem;
         color: #fff;
       }
-
       .logo-name {
         display: flex;
         align-items: center;
       }
-
       .logo-name img {
         height: 40px;
         width: 40px;
@@ -76,12 +73,10 @@
         font-size: 1.2rem;
         font-weight: bold;
       }
-
       .dropdown {
         position: relative;
         display: inline-block;
       }
-
       .dropdown-content {
         display: none;
         position: absolute;
@@ -91,15 +86,13 @@
         box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
         z-index: 1;
       }
-
       .dropdown-content a {
         color: #333;
         padding: 10px 15px;
         text-decoration: none;
         display: block;
         transition: background-color 0.3s;
-      }
-
+      } 
       .dropdown-content a:hover {
         background-color: #ddd;
       }
@@ -107,7 +100,6 @@
       .dropdown:hover .dropdown-content {
         display: block;
       }
-
       .dropdown-btn {
         background-color: transparent;
         border: none;
@@ -115,7 +107,6 @@
         font-size: 1.2rem;
         cursor: pointer;
       }
-
       .search-bar {
         display: none;
         margin: 10px 0;
@@ -151,12 +142,17 @@
       .card:hover {
         transform: translateY(-10px);
       }
-
       .card h3 {
         margin: 0;
         font-size: 1.5em;
       }
+      .charts-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
 
+    
       .feedback-form {
         background-color: white;
         padding: 20px;
@@ -175,7 +171,7 @@
       }
 
       .feedback-form button {
-        background-color: #10b981;
+        background-color: #002855;
         color: white;
         padding: 12px 30px;
         border: none;
@@ -186,7 +182,7 @@
       }
 
       .feedback-form button:hover {
-        background-color: #059669;
+        background-color: #002855;
         transform: scale(1.05);
       }
 
@@ -213,14 +209,160 @@
         display: block;
       }
 
+      .feedback-form,
+        .leave-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .feedback-form label,
+        .leave-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .feedback-form input,
+        .feedback-form textarea,
+        .leave-form input,
+        .leave-form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .feedback-form button,
+        .leave-form button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+.stats-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.card {
+    flex: 1;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 0 10px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.teal {
+    background-color: #008080;
+    color: #fff;
+}
+
+.purple {
+    background-color: #800080;
+    color: #fff;
+}
+
+.green {
+    background-color: #556B2F;
+    color: #fff;
+}
+
+.red {
+    background-color: #C0392B;
+    color: #fff;
+}
+
+h2 {
+    font-size: 20px;
+}
+
+p {
+    font-size: 28px;
+    font-weight: bold;
+}
+.collapsible {
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    padding: 10px 20px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+.collapsible.active, .collapsible:hover {
+    background-color: #0056b3;
+}
+.content {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    background-color: #f9f9f9;
+    margin-bottom: 10px;
+    border-left: 5px solid #333;
+}
+.content p {
+    padding: 10px;
+}
+
+
+.stats-footer {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-item span {
+    display: block;
+    font-size: 14px;
+    color: #777;
+}
+
+
+        
+
+        .chart-card {
+            
+            width: 78%;
+    margin: 10px 0;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
       footer {
         background-color: #001f3f;
         padding: 15px;
         text-align: center;
         color: #f4f4f4;
       }
-
-      /* Responsiveness */
+      /*  Responsiveness */ 
       @media (max-width: 1024px) {
         .dashboard {
           grid-template-columns: repeat(2, 1fr);
@@ -254,24 +396,21 @@
     <!-- Navbar -->
     <nav>
       <div class="logo-name">
-        <img src="logo.png" alt="Logo" />
-        <span>Attendance System</span>
+        <img src="logo.png" alt="Logo"  />
+        <span >Attendance System</span>
       </div>
-
       <span class="menu-toggle">&#9776;</span>
-
       <ul>
         <li><a href="#">Home</a></li>
         <li><a href="#dashboard">Dashboard</a></li>
+        <li><a href="#face-recognition">Face Recognition</a></li>
         <li><a href="#notifications">Notifications</a></li>
-
         <div class="notifications">
           <span class="bell">🔔</span>
           <div class="notifications-dropdown" id="notification-dropdown">
             <p>No new notifications</p>
           </div>
         </div>
-
         <li class="dropdown">
           <button class="dropdown-btn">&#9776;</button>
           <div class="dropdown-content">
@@ -285,6 +424,75 @@
     </nav>
 
     <div class="container">
+      <h1>Today's Attendance Summary Date: October 22, 2024</h1>
+      
+      <!-- Stats Cards -->
+      <div class="stats-container">
+          <div class="card teal">
+              <h2>Registered Organizations</h2>
+              <p>726</p>
+          </div>
+          <div class="card purple">
+              <h2>Registered Employees</h2>
+              <p>323565</p>
+          </div>
+          <div class="card green">
+              <h2>Present Today</h2>
+              <p>149056</p>
+              <h2>Out Today</h2>
+              <p>127620</p>
+          </div>
+          <div class="card red">
+              <h2>Total Registered Devices</h2>
+              <p>83017</p>
+              <h2>Tablet</h2>
+              <p>80244</p>
+              <h2>Desktop</h2>
+              <p>2773</p>
+          </div>
+      </div>
+
+      <!-- Collapsible Sections -->
+      <button class="collapsible">Real Time Attendance Activity</button>
+      <div class="content">
+          <div class="chart-card">
+               <!-- Real-Time Attendance Activity -->
+              <h3>Real Time Attendance Activity</h3>
+              <canvas id="realTimeChart"></canvas>
+          </div>
+          <p>Details for real-time activity will be displayed here.</p>
+      </div>
+
+      <button class="collapsible">Today's In-Time Statistics</button>
+      <div class="content">
+          <p>In-time statistics will go here.</p>
+          
+      </div>
+
+      <button class="collapsible">Attendance Statistics - as on: December 10, 2024</button>
+      <div class="content">
+          <!-- Attendance Statistics -->
+          <div class="chart-card">
+              <h3>Attendance Statistics - as on: December 10, 2024</h3>
+              <canvas id="attendanceStatsChart"></canvas>
+              <div class="stats-footer">
+                  <div class="stat-item">09:36 <br> <span>Average In-Time</span></div>
+                  <div class="stat-item">17:39 <br> <span>Average Out-Time</span></div>
+                  <div class="stat-item">0.92 sec <br> <span>Authentication Time</span></div>
+              </div>
+          </div>
+          <p>Statistics for the previous day.</p>
+      </div>
+
+      <button class="collapsible">Today's Trend</button>
+      <div class="content">
+          <p>Trend details will go here.</p>
+      </div>
+      
+      </div>
+  </div>
+
+    <div class="container">
       <!-- Dashboard section -->
       <section id="dashboard" class="dashboard" style="padding-top: 40px;">
         <div class="card">
@@ -296,8 +504,20 @@
         <div class="card">
           <h3>Average Attendance: 90%</h3>
         </div>
+        <div>
+          <h2>Real-Time Attendance Dashboard</h2>
+          <div class="charts-container">
+            <div class="chart-card">
+              <h3>Attendance Overview</h3>
+              <canvas id="attendanceOverviewChart"></canvas>
+            </div>
+            <div class="chart-card">
+              <h3>Employee Check-Ins</h3>
+              <canvas id="employeeCheckInChart"></canvas>
+            </div>
+          </div>
+        </div>
       </section>
-
       <!-- Feedback section -->
       <section id="feedback" style="margin-top: 50px;">
         <div class="feedback-form">
@@ -308,33 +528,218 @@
         </div>
       </section>
 
-      <!-- Leave Management section -->
-      <section id="leave" style="margin-top: 50px;">
-        <div class="card">
-          <h2>Leave Management</h2>
-          <button>Apply for Leave</button>
-        </div>
-      </section>
+      
+
+      <!-- Alerts and Notifications Section -->
+      <section id="alerts">
+        <h2>Alerts and Notifications</h2>
+        <ul id="notifications-list">
+            <!-- Notifications will appear here -->
+        </ul>
+    </section>
+
+    <!-- Face Recognition Section -->
+    <section id="face-recognition">
+      <h2>Face Recognition</h2>
+      <button id="start-recognition">Start Face Recognition</button>
+      <div id="recognition-result"></div>
+  </section>
+
+  <!-- Leave Management section -->
+  <section id="leave" style="margin-top: 50px;">
+    <div class="card">
+      <h2>Leave Management</h2>
+      <form id="leave-form">
+        <label for="leave-type">Leave Type:</label>
+        <select id="leave-type">
+            <option value="sick">Sick Leave</option>
+            <option value="vacation">Vacation</option>
+            <option value="personal">Personal Leave</option>
+        </select>
+
+        <label for="leave-start">Start Date:</label>
+        <input type="date" id="leave-start">
+
+        <label for="leave-end">End Date:</label>
+        <input type="date" id="leave-end">
+
+        <button id="submit-leave">Submit Leave Request</button>
+        <div id="leave-response"></div>
+    </form>
+    </div>
+  </section>
+
+  <!-- Self-Service Portal Section -->
+  <section id="self-service">
+    <h2>Self-Service Portal</h2>
+    <ul>
+        <li><a href="#">View Pay Slips</a></li>
+        <li><a href="#">Update Personal Information</a></li>
+        <li><a href="#">Request Support</a></li>
+    </ul>
+</section>
+
     </div>
 
-    <!-- Footer -->
     <footer id="contact">
       <p>&copy; 2024 Cloud-Based Attendance System. All Rights Reserved.</p>
     </footer>
 
     <script>
-      // Notifications dropdown toggle
-      document.querySelector(".bell").addEventListener("click", () => {
+// Notifications dropdown toggle
+document.querySelector(".bell").addEventListener("click", () => {
         const dropdown = document.getElementById("notification-dropdown");
         dropdown.classList.toggle("show");
       });
 
-      // Toggle menu for mobile
-      const menuToggle = document.querySelector(".menu-toggle");
-      const navUl = document.querySelector("nav ul");
+    // Load the charts when the DOM is fully loaded
+    document.addEventListener('DOMContentLoaded', () => {
+    // Real Time Attendance Activity Chart
+    const realTimeCtx = document.getElementById('realTimeChart').getContext('2d');
+    const realTimeChart = new Chart(realTimeCtx, {
+        type: 'line',
+        data: {
+            labels: ['21:09:00', '21:09:10', '21:09:20', '21:09:30', '21:09:40', '21:09:50'],
+            datasets: [{
+                label: 'Attendance Count',
+                data: [21440, 21438, 21435, 21432, 21429, 21425],
+                borderColor: 'rgba(54, 162, 235, 1)',
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                fill: true,
+                lineTension: 0.1
+            }]
+        },
+        options: {
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Time'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Attendance Count'
+                    }
+                }
+            }
+        }
+    });
 
-      menuToggle.addEventListener("click", () => {
-        navUl.style.display = navUl.style.display === "flex" ? "none" : "flex";
+    // Attendance Statistics Chart
+    const attendanceCtx = document.getElementById('attendanceStatsChart').getContext('2d');
+    const attendanceChart = new Chart(attendanceCtx, {
+        type: 'line',
+        data: {
+            labels: ['15th Oct', '16th Oct', '17th Oct', '18th Oct', '19th Oct', '20th Oct', '21st Oct'],
+            datasets: [{
+                label: 'Active Users',
+                data: [100000, 95000, 90000, 85000, 70000, 50000, 100000],
+                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                fill: true
+            }, {
+                label: 'Biometric Terminals',
+                data: [80244, 75000, 80000, 81000, 78000, 72000, 80244],
+                borderColor: 'rgba(255, 159, 64, 1)',
+                backgroundColor: 'rgba(255, 159, 64, 0.2)',
+                fill: true
+            }, {
+                label: 'Desktop Devices',
+                data: [3100, 3000, 2900, 2800, 2700, 2600, 2773],
+                borderColor: 'rgba(153, 102, 255, 1)',
+                backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                fill: true
+            }]
+        },
+        options: {
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Date'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Count'
+                    }
+                }
+            }
+        }
+    });
+});
+
+// JavaScript for collapsible sections
+document.addEventListener('DOMContentLoaded', () => {
+    const collapsibles = document.querySelectorAll('.collapsible');
+    
+    collapsibles.forEach(item => {
+        item.addEventListener('click', function() {
+            this.classList.toggle('active');
+            
+            const content = this.nextElementSibling;
+            if (content.style.display === 'block') {
+                content.style.display = 'none';
+            } else {
+                content.style.display = 'block';
+            }
+        });
+    });
+});
+
+      document.addEventListener('DOMContentLoaded', () => {
+        // Attendance Overview Chart
+        const attendanceCtx = document.getElementById('attendanceOverviewChart').getContext('2d');
+        new Chart(attendanceCtx, {
+          type: 'line',
+          data: {
+            labels: ['10 AM', '11 AM', '12 PM', '1 PM', '2 PM', '3 PM'],
+            datasets: [
+              {
+                label: 'Employees Present',
+                data: [300, 450, 700, 800, 600, 500],
+                borderColor: '#10b981',
+                backgroundColor: 'rgba(16, 185, 129, 0.2)',
+                fill: true,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              legend: {
+                display: true,
+              },
+            },
+          },
+        });
+
+        // Employee Check-In Chart
+        const checkInCtx = document.getElementById('employeeCheckInChart').getContext('2d');
+        new Chart(checkInCtx, {
+          type: 'bar',
+          data: {
+            labels: ['Dept A', 'Dept B', 'Dept C', 'Dept D', 'Dept E'],
+            datasets: [
+              {
+                label: 'Check-Ins',
+                data: [80, 120, 60, 150, 100],
+                backgroundColor: ['#3b82f6', '#a78bfa', '#f87171', '#fbbf24', '#10b981'],
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              legend: {
+                display: true,
+              },
+            },
+          },
+        });
       });
     </script>
   </body>
