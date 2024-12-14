@@ -113,6 +113,7 @@
       }
 
       .search-bar input[type="text"] {
+        border-radius: 2em;
         padding: 10px;
         width: 100%;
       }
@@ -399,6 +400,11 @@ p {
         <img src="logo.png" alt="Logo"  />
         <span >Attendance System</span>
       </div>
+      <!-- Search Bar -->
+      <div class="search-bar" id="search-bar">
+        <input type="text" placeholder="Search..." />
+      </div>
+
       <span class="menu-toggle">&#9776;</span>
       <ul>
         <li><a href="#">Home</a></li>
@@ -418,6 +424,7 @@ p {
             <a href="#feedback">Feedback</a>
             <a href="#leave">Leave Management</a>
             <a href="#contact">Contact</a>
+            <a onclick="window.location.href='index.html';">Sign Out</a>
           </div>
         </li>
       </ul>
@@ -586,6 +593,18 @@ p {
     </footer>
 
     <script>
+      // Toggle the search bar when "Search" is clicked
+const searchTrigger = document.getElementById("search-trigger");
+const searchBar = document.getElementById("search-bar");
+
+searchTrigger.addEventListener("click", function (event) {
+  event.preventDefault();
+  if (searchBar.style.display === "none" || searchBar.style.display === "") {
+    searchBar.style.display = "block";
+  } else {
+    searchBar.style.display = "none";
+  }
+});
 // Notifications dropdown toggle
 document.querySelector(".bell").addEventListener("click", () => {
         const dropdown = document.getElementById("notification-dropdown");

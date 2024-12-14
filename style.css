@@ -5,6 +5,7 @@ body {
   background-color: rgb(211,211,211);
   color: white;
   background-image: url(assets/cloud-bg.avif);
+  overflow: hidden;
 }
 
 /* Navbar styling */
@@ -110,7 +111,7 @@ nav ul li a:hover {
   border-radius: 2em;
   padding: 10px;
   width: 100%;
-  /* border-radius: 2em; */
+  
 }
 
 .Main-content {
@@ -404,7 +405,7 @@ footer {
 
 /* Responsiveness */
 @media (max-width: 768px) {
-  nav ul {
+  nav ul li{
     display: none;
   }
   section {

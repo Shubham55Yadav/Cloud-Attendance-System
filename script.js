@@ -76,12 +76,12 @@ document
     const captchaInput = document.getElementById("captcha").value;
     const captchaSolution = 7 * 7;
 
-    if (parseInt(captchaInput) === captchaSolution) {
-      alert("Login successful!");
-      // Add login functionality here
-    } else {
-      alert("Incorrect captcha! Please try again.");
-    }
+    // if (parseInt(captchaInput) === captchaSolution) {
+    //   alert("Login successful!");
+    //   // Add login functionality here
+    // } else {
+    //   alert("Incorrect captcha! Please try again.");
+    // }
   });
 
 // Refresh button logic (can be expanded with real CAPTCHA generation)
